@@ -1,7 +1,7 @@
 package com.web.kokoro.backend;
 
 import com.web.kokoro.backend.mapper.UserMapper;
-import com.web.kokoro.backend.pojo.User;
+import com.web.kokoro.backend.pojo.UserEntity;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -23,8 +23,8 @@ class BackendApplicationTests {
 
     @Test
     public void testList() {
-        List<User> userList = userMapper.list();
-        for (User user : userList) {
+        List<UserEntity> userList = userMapper.list();
+        for (UserEntity user : userList) {
             System.out.println(user);
         }
     }

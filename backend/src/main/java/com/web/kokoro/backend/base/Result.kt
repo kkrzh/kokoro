@@ -1,38 +1,38 @@
 package com.web.kokoro.backend.base
 
-object ResultCode {
+sealed class  ResultCode(val code: Int, val msg: String) {
     // ================ 成功状态码 (2xx) ================
-    const val SUCCESS = 200 // 请求成功
-    const val CREATED = 201 // 资源创建成功
-    const val ACCEPTED = 202 // 请求已接受但未处理完成
-    const val NO_CONTENT = 204 // 请求成功但无返回内容
+    object SUCCESS : ResultCode(200, "成功")
+    object CREATED : ResultCode(201, "资源创建成功")
+    object ACCEPTED : ResultCode(202, "请求已接受但未处理完成")
+    object NO_CONTENT : ResultCode(204, "请求成功但无返回内容")
 
     // ================ 重定向状态码 (3xx) ================
-    const val MOVED_PERMANENTLY = 301 // 资源永久重定向
-    const val FOUND = 302 // 资源临时重定向
-    const val SEE_OTHER = 303 // 重定向到其他资源
-    const val NOT_MODIFIED = 304 // 资源未修改（缓存）
+    object MOVED_PERMANENTLY : ResultCode(301, "资源永久重定向")
+    object FOUND : ResultCode(302, "资源临时重定向")
+    object SEE_OTHER : ResultCode(303, "重定向到其他资源")
+    object NOT_MODIFIED : ResultCode(304, "资源未修改（缓存）")
 
     // ================ 客户端错误 (4xx) ================
-    const val BAD_REQUEST = 400 // 请求参数错误
-    const val UNAUTHORIZED = 401 // 未授权/身份验证失败
-    const val FORBIDDEN = 403 // 禁止访问（权限不足）
-    const val NOT_FOUND = 404 // 资源不存在
-    const val METHOD_NOT_ALLOWED = 405 // 请求方法不允许
-    const val NOT_ACCEPTABLE = 406 // 请求格式不可接受
-    const val CONFLICT = 409 // 资源冲突
-    const val GONE = 410 // 资源已永久删除
-    const val UNSUPPORTED_MEDIA_TYPE = 415 // 不支持的媒体类型
-    const val UNPROCESSABLE_ENTITY = 422 // 请求格式正确但语义错误
-    const val TOO_MANY_REQUESTS = 429 // 请求过于频繁
+    object BAD_REQUEST : ResultCode(400, "请求参数错误")
+    object UNAUTHORIZED : ResultCode(401, "未授权/身份验证失败")
+    object FORBIDDEN : ResultCode(403, "禁止访问（权限不足）")
+    object NOT_FOUND : ResultCode(404, "资源不存在")
+    object METHOD_NOT_ALLOWED : ResultCode(405, "请求方法不允许")
+    object NOT_ACCEPTABLE : ResultCode(406, "请求格式不可接受")
+    object CONFLICT : ResultCode(409, "资源冲突")
+    object GONE : ResultCode(410, "资源已永久删除")
+    object UNSUPPORTED_MEDIA_TYPE : ResultCode(415, "不支持的媒体类型")
+    object UNPROCESSABLE_ENTITY : ResultCode(422, "请求格式正确但语义错误")
+    object TOO_MANY_REQUESTS : ResultCode(429, "请求过于频繁")
 
     // ================ 服务端错误 (5xx) ================
-    const val ERROR = 500 // 服务器内部错误
-    const val NOT_IMPLEMENTED = 501 // 功能未实现
-    const val BAD_GATEWAY = 502 // 网关错误
-    const val SERVICE_UNAVAILABLE = 503 // 服务不可用
-    const val GATEWAY_TIMEOUT = 504 // 网关超时
-    const val HTTP_VERSION_NOT_SUPPORTED = 505 // HTTP版本不支持
+    object ERROR : ResultCode(500, "服务器内部错误")
+    object NOT_IMPLEMENTED : ResultCode(501, "功能未实现")
+    object BAD_GATEWAY : ResultCode(502, "网关错误")
+    object SERVICE_UNAVAILABLE : ResultCode(503, "服务不可用")
+    object GATEWAY_TIMEOUT : ResultCode(504, "网关超时")
+    object HTTP_VERSION_NOT_SUPPORTED : ResultCode(505, "HTTP版本不支持")
 }
 
 data class Result(
@@ -43,10 +43,22 @@ data class Result(
     companion object{
         @JvmStatic
         fun success(data: Any? = null): Result =
-            Result(ResultCode.SUCCESS, "成功", data)
+            Result(ResultCode.SUCCESS.code, "成功", data)
 
         @JvmStatic
-        fun error(code: Int = ResultCode.ERROR, msg: String): Result =
+        fun success(): Result =
+            Result(ResultCode.SUCCESS.code, "成功", null)
+
+        @JvmStatic
+        fun error(code: Int, msg: String): Result =
             Result(code, msg, null)
+
+        @JvmStatic
+        fun error(msg: String): Result =
+            Result(500, msg, null)
+
+        @JvmStatic
+        fun error(result: ResultCode): Result =
+            Result(result.code, result.msg, null)
     }
 }

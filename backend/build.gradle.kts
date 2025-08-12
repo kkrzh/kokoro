@@ -34,6 +34,8 @@ repositories {
 extra["springModulithVersion"] = "1.4.1"
 
 dependencies {
+	implementation("com.alibaba:fastjson:1.2.76")
+
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
 

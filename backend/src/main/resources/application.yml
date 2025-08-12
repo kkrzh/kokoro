@@ -1,6 +1,10 @@
 # ========================
 # 应用基本配置
 # ========================
+jwt:
+  secret: "bXlTdXBlclNlY3JldEtleVRoYXRJczMyQnl0ZXNMb25n" # 32字节Base64编码
+  expiration: 86400000 # 24小时
+
 spring:
   application:
     name: backend  # 应用名称（用于服务发现、监控等）
@@ -10,11 +14,17 @@ spring:
     web-application-type: servlet  # 应用类型（servlet/reactive/none）
   port: 8080  # 服务端口
 
+  # 禁用Spring Boot安全默认用户
+#  security:
+#    user:
+#      name:
+#      password:
+
   # ========================
   # 数据源配置 (MySQL示例)
   # ========================
   datasource:
-    url: jdbc:mysql://localhost:3306/db01
+    url: jdbc:mysql://localhost:3306/kkrdb
     username: root
     password: 1320
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -115,3 +125,4 @@ spring:
 #
 ## 激活默认环境（无profile时使用）
 #spring.profiles.active: dev
+
