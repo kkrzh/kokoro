@@ -1,0 +1,117 @@
+# ========================
+# 应用基本配置
+# ========================
+spring:
+  application:
+    name: backend  # 应用名称（用于服务发现、监控等）
+
+  # 应用运行端口
+  main:
+    web-application-type: servlet  # 应用类型（servlet/reactive/none）
+  port: 8080  # 服务端口
+
+  # ========================
+  # 数据源配置 (MySQL示例)
+  # ========================
+  datasource:
+    url: jdbc:mysql://localhost:3306/db01
+    username: root
+    password: 1320
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      # Hikari连接池配置
+      connection-timeout: 30000  # 连接超时时间(ms)
+      maximum-pool-size: 20      # 最大连接数
+      minimum-idle: 5             # 最小空闲连接
+
+#  # ========================
+#  # JPA/Hibernate配置
+#  # ========================
+#  jpa:
+#    database-platform: org.hibernate.dialect.MySQL8Dialect
+#    show-sql: true               # 显示SQL语句（开发环境建议开启）
+#    properties:
+#      hibernate:
+#        format_sql: true         # 格式化SQL输出
+#        use-new-id-generator-mappings: true
+#    hibernate:
+#      ddl-auto: update           # 数据库初始化策略（update/create/create-drop/validate/none）
+#
+## ========================
+## 日志配置
+## ========================
+#logging:
+#  level:
+#    root: info                   # 全局日志级别
+#    org.springframework.web: debug
+#    com.example: debug           # 项目包日志级别
+#  file:
+#    name: logs/app.log           # 日志文件路径
+#  pattern:
+#    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+#
+## ========================
+## Web配置
+## ========================
+#server:
+#  servlet:
+#    encoding:
+#      charset: UTF-8            # 请求和响应字符编码
+#      force: true
+#  tomcat:
+#    basedir: tomcat             # Tomcat基础目录
+#    max-threads: 200            # 最大工作线程数
+#    min-spare-threads: 10       # 最小工作线程数
+#
+## ========================
+## 安全配置（示例）
+## ========================
+#security:
+#  oauth2:
+#    client:
+#      registration:
+#        github:
+#          client-id: your-github-client-id
+#          client-secret: your-github-client-secret
+#
+## ========================
+## 自定义配置
+## ========================
+#app:
+#  api:
+#    version: v1
+#  cache:
+#    ttl: 300   # 缓存时间(秒)
+#  feature-flags:
+#    new-payment: true
+#
+## ========================
+## 配置文件多环境支持
+## ========================
+#---
+## 开发环境配置
+#spring:
+#  config:
+#    activate:
+#      on-profile: dev  # 修复此处
+#  datasource:
+#    url: jdbc:mysql://dev-db:3306/db01?useSSL=false
+#    username: root
+#    password: 1320
+#
+#---
+## 生产环境配置
+#spring:
+#  config:
+#    activate:
+#      on-profile: prod  # 修复此处
+#  port: 80
+#  datasource:
+#    url: jdbc:mysql://prod-db:3306/db01?useSSL=true
+#    username: produser
+#    password: ${DB_PASSWORD}  # 从环境变量获取密码
+#  jpa:
+#    show-sql: false
+#
+## 激活默认环境（无profile时使用）
+#spring.profiles.active: dev
