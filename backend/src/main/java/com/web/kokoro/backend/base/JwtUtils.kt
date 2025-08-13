@@ -1,4 +1,5 @@
-package com.web.kokoro.backend.base.jwt
+package com.web.kokoro.backend.base
+
 import io.jsonwebtoken.Claims
 import io.jsonwebtoken.Jwts
 import io.jsonwebtoken.security.Keys

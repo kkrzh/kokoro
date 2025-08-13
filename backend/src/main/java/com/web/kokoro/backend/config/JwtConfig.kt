@@ -1,4 +1,4 @@
-package com.web.kokoro.backend.base.jwt
+package com.web.kokoro.backend.config
 
 import io.jsonwebtoken.security.Keys
 import org.springframework.beans.factory.annotation.Value

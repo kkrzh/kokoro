@@ -1,7 +1,7 @@
 package com.web.kokoro.backend;
 
-import com.web.kokoro.backend.mapper.UserMapper;
-import com.web.kokoro.backend.pojo.UserEntity;
+import com.web.kokoro.backend.core.user.UserMapper;
+import com.web.kokoro.backend.core.user.UserEntity;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

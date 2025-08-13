@@ -1,10 +1,10 @@
-package com.web.kokoro.backend.mapper;
-import com.web.kokoro.backend.core.user.RegisterRequest;
-import com.web.kokoro.backend.pojo.UserEntity;
+package com.web.kokoro.backend.core.user;
+
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+
 import java.util.List;
 
 @Mapper

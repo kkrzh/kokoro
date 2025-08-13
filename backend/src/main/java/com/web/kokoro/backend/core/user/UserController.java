@@ -1,11 +1,8 @@
-package com.web.kokoro.backend.core.user.controller;
+package com.web.kokoro.backend.core.user;
 
 import com.web.kokoro.backend.base.Result;
 import com.web.kokoro.backend.core.user.RegisterRequest;
-import com.web.kokoro.backend.core.user.service.UserService;
-import com.web.kokoro.backend.pojo.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

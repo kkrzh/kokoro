@@ -2,7 +2,7 @@ package com.web.kokoro.backend.filter
 
 import com.web.kokoro.backend.base.Result
 import com.web.kokoro.backend.base.ResultCode.UNAUTHORIZED
-import com.web.kokoro.backend.base.jwt.JwtUtils
+import com.web.kokoro.backend.base.JwtUtils
 import io.jsonwebtoken.Claims
 import jakarta.servlet.FilterChain
 import jakarta.servlet.http.HttpServletRequest
