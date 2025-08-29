@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_20"
+        android:layout_marginTop="@dimen/dp_20"
+        android:textSize="@dimen/sp_40"
+        android:text="相册"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <cn.xj.kokoro.mobile.view.DashboardView
+        android:id="@+id/cusView1"
+        android:layout_width="@dimen/dp_400"
+        android:layout_height="@dimen/dp_400"
+        android:layout_marginStart="@dimen/dp_20"
+        android:layout_marginTop="@dimen/dp_20"
+        android:textSize="@dimen/sp_40"
+        android:text="View1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView" />
+
+    <SeekBar
+        android:id="@+id/seekBar"
+        app:layout_constraintStart_toStartOf="@id/cusView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/cusView1"/>
+
+    <LinearLayout
+        android:id="@+id/buttonLayout"
+        android:layout_marginTop="@dimen/dp_10"
+        app:layout_constraintTop_toBottomOf="@id/seekBar"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/button1"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="20"/>
+        <Button
+            android:id="@+id/button2"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="50"/>
+        <Button
+            android:id="@+id/button3"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="80"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/setLayout"
+        app:layout_constraintTop_toBottomOf="@id/buttonLayout"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Switch
+            android:id="@+id/seekbar1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="根拦截"/>
+
+        <Switch
+            android:id="@+id/seekbar2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="过滤Scroll"/>
+
+    </LinearLayout>
+
+    <cn.xj.kokoro.mobile.EventFrameLayout
+        android:id="@+id/rootLayout"
+        android:padding="@dimen/dp_20"
+        android:layout_marginTop="@dimen/dp_10"
+        android:background="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/setLayout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_1000">
+
+        <ScrollView
+            android:padding="@dimen/dp_20"
+            android:background="@color/colorRed"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:background="@color/colorBlue"
+                android:layout_height="wrap_content">
+                <androidx.core.widget.NestedScrollView
+                    android:padding="@dimen/dp_20"
+                    android:background="@color/colorRed"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_500">
+                    <LinearLayout
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:background="@color/colorBlue"
+                        android:layout_height="wrap_content">
+                        <androidx.core.widget.NestedScrollView
+                            android:padding="@dimen/dp_20"
+                            android:background="@color/colorRed"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dp_300">
+                            <LinearLayout
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:layout_width="match_parent"
+                                android:background="@color/colorBlue"
+                                android:layout_height="wrap_content">
+                                <View
+                                    android:layout_gravity="center"
+                                    android:id="@+id/canvan3"
+                                    android:layout_width="@dimen/dp_400"
+                                    android:layout_height="@dimen/dp_600"/>
+                            </LinearLayout>
+
+                        </androidx.core.widget.NestedScrollView>
+
+                        <View
+                            android:layout_gravity="center"
+                            android:id="@+id/canvan2"
+                            android:layout_width="@dimen/dp_500"
+                            android:layout_height="@dimen/dp_600"/>
+
+
+                    </LinearLayout>
+
+
+                </androidx.core.widget.NestedScrollView>
+
+                <View
+                    android:layout_gravity="center"
+                    android:id="@+id/canvan"
+                    android:layout_width="@dimen/dp_600"
+                    android:layout_height="@dimen/dp_600"/>
+
+
+
+            </LinearLayout>
+
+        </ScrollView>
+        <TextView
+            android:background="@color/colorGreyWhite"
+            android:textColor="@color/trBlack"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="我不是ScrollView"/>
+
+    </cn.xj.kokoro.mobile.EventFrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
