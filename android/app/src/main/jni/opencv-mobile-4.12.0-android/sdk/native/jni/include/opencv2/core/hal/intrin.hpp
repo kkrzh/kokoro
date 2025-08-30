@@ -48,7 +48,7 @@
 #include <cmath>
 #include <float.h>
 #include <stdlib.h>
-#include "../cvdef.h"
+#include "opencv2/core/cvdef.h"
 
 #if defined(__GNUC__) && __GNUC__ == 12
 #pragma GCC diagnostic push
@@ -257,7 +257,7 @@ using namespace CV_CPU_OPTIMIZATION_HAL_NAMESPACE;
 
 #else
 
-#include "intrin_cpp.hpp"
+#include "opencv2/core/hal/intrin_cpp.hpp"
 
 #endif
 

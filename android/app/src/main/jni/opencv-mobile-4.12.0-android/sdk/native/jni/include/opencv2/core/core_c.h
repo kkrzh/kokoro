@@ -45,7 +45,7 @@
 #ifndef OPENCV_CORE_C_H
 #define OPENCV_CORE_C_H
 
-#include "types_c.h"
+#include "opencv2/core/types_c.h"
 
 #ifdef __cplusplus
 /* disable MSVC warning C4190 / clang-cl -Wreturn-type-c-linkage:

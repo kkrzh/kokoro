@@ -45,18 +45,18 @@
 
 // File that defines what modules where included during the build of OpenCV
 // These are purely the defines of the correct HAVE_OPENCV_modulename values
-#include "opencv_modules.hpp"
+#include "opencv2/opencv_modules.hpp"
 
 // Then the list of defines is checked to include the correct headers
 // Core library is always included --> without no OpenCV functionality available
-#include "core.hpp"
+#include "opencv2/core.hpp"
 
 // Then the optional modules are checked
 #ifdef HAVE_OPENCV_CALIB3D
 #include "opencv2/calib3d.hpp"
 #endif
 #ifdef HAVE_OPENCV_FEATURES2D
-#include "features2d.hpp"
+#include "opencv2/features2d.hpp"
 #endif
 #ifdef HAVE_OPENCV_DNN
 #include "opencv2/dnn.hpp"
@@ -65,13 +65,13 @@
 #include "opencv2/flann.hpp"
 #endif
 #ifdef HAVE_OPENCV_HIGHGUI
-#include "highgui/highgui.hpp"
+#include "opencv2/highgui.hpp"
 #endif
 #ifdef HAVE_OPENCV_IMGCODECS
 #include "opencv2/imgcodecs.hpp"
 #endif
 #ifdef HAVE_OPENCV_IMGPROC
-#include "imgproc/imgproc.hpp"
+#include "opencv2/imgproc.hpp"
 #endif
 #ifdef HAVE_OPENCV_ML
 #include "opencv2/ml.hpp"
@@ -80,13 +80,13 @@
 #include "opencv2/objdetect.hpp"
 #endif
 #ifdef HAVE_OPENCV_PHOTO
-#include "photo/photo.hpp"
+#include "opencv2/photo.hpp"
 #endif
 #ifdef HAVE_OPENCV_STITCHING
 #include "opencv2/stitching.hpp"
 #endif
 #ifdef HAVE_OPENCV_VIDEO
-#include "video.hpp"
+#include "opencv2/video.hpp"
 #endif
 #ifdef HAVE_OPENCV_VIDEOIO
 #include "opencv2/videoio.hpp"

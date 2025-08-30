@@ -55,7 +55,21 @@ project("lib-kokoro")
 
 
 set(OpenCV_DIR ${CMAKE_SOURCE_DIR}/opencv-mobile-4.12.0-android/sdk/native/jni)
+message(STATUS "CMAKE_SOURCE_DIR: ${CMAKE_SOURCE_DIR}")
+message(STATUS "OpenCV_DIR: ${OpenCV_DIR}")
+message(STATUS "ANDROID_ABI: ${ANDROID_ABI}")
 find_package(OpenCV REQUIRED)
 
-target_link_libraries(lib-kokoro ${OpenCV_LIBS})
+if(OpenCV_FOUND)
+    message(STATUS "OpenCV found: ${OpenCV_VERSION}")
+    include_directories(${OpenCV_INCLUDE_DIRS})
+else()
+    message(FATAL_ERROR "OpenCV not found")
+endif()
+
+
+add_library(kokoro_opencv SHARED
+        native-lib.cpp
+)
+target_link_libraries(kokoro_opencv ${OpenCV_LIBS})
 

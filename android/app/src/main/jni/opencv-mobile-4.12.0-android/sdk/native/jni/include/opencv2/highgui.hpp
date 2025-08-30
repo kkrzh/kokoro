@@ -14,4 +14,4 @@
 // limitations under the License.
 //
 
-#include "highgui/highgui.hpp"
+#include "opencv2/highgui/highgui.hpp"

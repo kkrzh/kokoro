@@ -45,9 +45,9 @@
 #ifndef OPENCV_HAL_HPP
 #define OPENCV_HAL_HPP
 
-#include "../cvdef.h"
-#include "../cvstd.hpp"
-#include "../../features2d/hal/interface.h"
+#include "opencv2/core/cvdef.h"
+#include "opencv2/core/cvstd.hpp"
+#include "opencv2/core/hal/interface.h"
 
 namespace cv { namespace hal {
 

@@ -44,8 +44,8 @@
 #ifndef OPENCV_TRACKING_HPP
 #define OPENCV_TRACKING_HPP
 
-#include "../core.hpp"
-#include "../imgproc/imgproc.hpp"
+#include "opencv2/core.hpp"
+#include "opencv2/imgproc.hpp"
 #ifdef HAVE_OPENCV_DNN
 # include "opencv2/dnn.hpp"
 #endif

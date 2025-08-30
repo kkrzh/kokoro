@@ -243,6 +243,23 @@ class PhotoDataManage(private val contet: Context) {
         return array.toArray(arrayOf())
     }
 
+
+    fun getSortCheckNative():Array<Uri>{
+        val map = HashMap<Int,Uri>()
+        for (i in  dataList[0].fileList){
+            if (i.state){
+                map[i.id] = i.name
+            }
+        }
+        val array = arrayListOf<Uri>()
+        for (i in 1..map.size){
+            if (map[i] != null){
+                array.add(map[i]!!)
+            }
+        }
+        return array.toArray(arrayOf())
+    }
+
     /**
      * 获取当前选中图片个数
      */

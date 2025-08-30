@@ -53,9 +53,9 @@
 #include <vector>
 #include <limits>
 
-#include "cvdef.h"
-#include "cvstd.hpp"
-#include "matx.hpp"
+#include "opencv2/core/cvdef.h"
+#include "opencv2/core/cvstd.hpp"
+#include "opencv2/core/matx.hpp"
 
 #ifdef _MSC_VER
 #pragma warning(push)

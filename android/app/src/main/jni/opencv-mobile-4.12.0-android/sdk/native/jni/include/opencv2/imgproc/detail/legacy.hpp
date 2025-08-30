@@ -5,7 +5,7 @@
 #ifndef OPENCV_IMGPROC_DETAIL_LEGACY_HPP
 #define OPENCV_IMGPROC_DETAIL_LEGACY_HPP
 
-#include "../imgproc.hpp"
+#include "opencv2/imgproc.hpp"
 
 namespace cv {
 

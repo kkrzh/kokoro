@@ -15,6 +15,14 @@ import com.google.android.material.tabs.TabLayoutMediator
 class MainActivity : BaseActivity(R.layout.activity_main) {
     val fragmentList: MutableList<Pair<String, Fragment>> = arrayListOf()
 
+    val page1Fragment by lazy {
+        Page1Fragment()
+    }
+
+    val page2Fragment by lazy {
+        Page2Fragment()
+    }
+
     override fun init(savedInstanceState: Bundle?) {
         enableEdgeToEdge()
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -22,8 +30,8 @@ class MainActivity : BaseActivity(R.layout.activity_main) {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        fragmentList.add("OBJECT-绘制" to Page1Fragment())
-        fragmentList.add("OBJECT-OPENCV" to Page2Fragment())
+        fragmentList.add("OBJECT-绘制" to page1Fragment)
+        fragmentList.add("OBJECT-OPENCV" to page2Fragment)
 
         val tabLayout = findViewById<TabLayout>(R.id.tabLayout)
 

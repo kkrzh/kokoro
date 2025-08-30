@@ -8,7 +8,7 @@
 #include <limits>
 #include <cstring>
 #include <algorithm>
-#include "../saturate.hpp"
+#include "opencv2/core/saturate.hpp"
 
 
 // Emscripten v2.0.13 (latest officially supported, as of 07/30/2024):

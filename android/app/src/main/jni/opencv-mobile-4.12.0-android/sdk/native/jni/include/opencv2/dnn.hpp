@@ -14,4 +14,4 @@
 // limitations under the License.
 //
 
-#include "dnn/dnn.hpp"
+#include "opencv2/dnn/dnn.hpp"

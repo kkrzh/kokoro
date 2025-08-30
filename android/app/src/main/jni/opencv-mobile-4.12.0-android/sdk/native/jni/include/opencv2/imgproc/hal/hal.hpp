@@ -1,10 +1,10 @@
 #ifndef CV_IMGPROC_HAL_HPP
 #define CV_IMGPROC_HAL_HPP
 
-#include "../../core/cvdef.h"
-#include "../../core/cvstd.hpp"
-#include "../../core/utility.hpp"
-#include "../../features2d/hal/interface.h"
+#include "opencv2/core/cvdef.h"
+#include "opencv2/core/cvstd.hpp"
+#include "opencv2/core/utility.hpp"
+#include "opencv2/core/hal/interface.h"
 
 namespace cv { namespace hal {
 

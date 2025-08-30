@@ -17,7 +17,7 @@
 #ifndef OPENCV_DNN_HPP
 #define OPENCV_DNN_HPP
 
-#include "../core.hpp"
+#include "opencv2/core.hpp"
 
 namespace cv {
 namespace dnn {

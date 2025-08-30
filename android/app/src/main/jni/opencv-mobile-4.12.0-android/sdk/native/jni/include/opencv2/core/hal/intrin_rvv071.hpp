@@ -9,7 +9,7 @@
 
 #include <float.h>
 #include <algorithm>
-#include "../utility.hpp"
+#include "opencv2/core/utility.hpp"
 
 namespace cv
 {

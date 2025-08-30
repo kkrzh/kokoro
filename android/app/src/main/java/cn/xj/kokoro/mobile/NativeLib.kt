@@ -1,17 +1,15 @@
-package cn.xj.kokoro.mobile;
+package cn.xj.kokoro.mobile
 
-/**
- * Created by you on 2018-03-12.
- * 图像数据nv21,i420, nv12, yv12的一些转换裁剪旋转的相关操作
- */
-public final class NativeLib {
+class NativeLib {
+    // 声明本地方法
+    external fun helloWorld(): String
+    external fun showText(input: String,out: String)
 
-    private NativeLib() {}
-
-    static {
-        System.loadLibrary("lib-kokoro");
+    companion object {
+        val INSTANT = NativeLib()
+        // 加载本地库
+        init {
+            System.loadLibrary("kokoro_opencv")
+        }
     }
-
-    public static native String helloWorld();
-
 }

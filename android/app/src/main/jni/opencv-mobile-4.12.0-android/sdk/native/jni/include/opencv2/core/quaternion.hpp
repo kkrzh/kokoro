@@ -1691,6 +1691,6 @@ using Quatf = Quat<float>;
 //! @} core
 }
 
-#include "quaternion.inl.hpp"
+#include "opencv2/core/quaternion.inl.hpp"
 
 #endif /* OPENCV_CORE_QUATERNION_HPP */

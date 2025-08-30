@@ -43,7 +43,7 @@
 #ifndef OPENCV_IMGPROC_HPP
 #define OPENCV_IMGPROC_HPP
 
-#include "core.hpp"
+#include "opencv2/core.hpp"
 
 /**
 @defgroup imgproc Image Processing
