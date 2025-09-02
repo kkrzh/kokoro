@@ -16,6 +16,7 @@ import cn.xj.kokoro.mobile.utils.setOnIntervalClickListener
 import com.bumptech.glide.Glide
 import com.google.mlkit.vision.common.InputImage
 import com.google.mlkit.vision.objects.defaults.ObjectDetectorOptions
+import org.opencv.android.Utils
 
 class Page3Fragment: BaseFragment() {
     override fun getViewId(): Int = R.layout.fragment_page3
