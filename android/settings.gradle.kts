@@ -22,3 +22,4 @@ dependencyResolutionManagement {
 rootProject.name = "Record"
 include(":app")
 include(":album")
+include(":opencv-sdk")

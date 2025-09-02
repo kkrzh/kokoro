@@ -86,6 +86,7 @@ dependencies {
     implementation("androidx.camera:camera-extensions:${camerax_version}")
 
 
+    implementation(project(":opencv-sdk"))
     implementation(project(":album"))
     implementation("com.github.bumptech.glide:glide:4.13.2")
 
