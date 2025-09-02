@@ -40,6 +40,7 @@ class Page2Fragment: BaseFragment() {
                 }
             }
         }
+//        NativeLib.INSTANT.showCamera()
 
 
 

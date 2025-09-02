@@ -6,11 +6,13 @@
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/myfontface.h>
 #include <android/log.h>
+#include <android/bitmap.h>
+
 
 extern "C" JNIEXPORT jstring JNICALL
 
 Java_cn_xj_kokoro_mobile_NativeLib_helloWorld(JNIEnv *env, jobject) {
-    std::string hello = "Hello from C++";
+    std::string hello = "C++Text,调用测试，图片操作";
     return env->NewStringUTF(hello.c_str());
 }
 
@@ -18,8 +20,7 @@ extern "C" JNIEXPORT void JNICALL
 Java_cn_xj_kokoro_mobile_NativeLib_showText(JNIEnv *env, jobject,jstring inputPath,jstring outputPath){
     const char* inputPathCStr = env->GetStringUTFChars(inputPath, nullptr);
     const char* outputPathCStr = env->GetStringUTFChars(outputPath, nullptr);
-
-    // 检查转换是否成功
+        // 检查转换是否成功
     if (!inputPathCStr || !outputPathCStr) {
         // 错误处理：内存不足
         return;
@@ -41,5 +42,6 @@ Java_cn_xj_kokoro_mobile_NativeLib_showText(JNIEnv *env, jobject,jstring inputPa
     cv::Rect rr = cv::getTextSize(bgr.size(), zhtext, cv::Point(30, 250), myfont, 20);
 
     cv::imwrite(outputPathCStr, bgr);
-
 }
+
+

@@ -2,14 +2,18 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <uses-permission android:name="android.permission.INTERNET" /> <!-- 允许相机拍摄照片和录制视频 -->
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-feature
         android:name="android.hardware.camera"
         android:required="false" />
 
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PROJECTION" />
     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
 
     <application
@@ -45,6 +49,18 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/provider_paths" />
         </provider>
+
+        <service
+            android:name=".ui.page3.MediaProjectionService"
+            android:foregroundServiceType="mediaProjection" />
+        <!--适配华为（huawei）刘海屏-->
+        <meta-data
+            android:name="android.notch_support"
+            android:value="true"/>
+        <!--适配小米（xiaomi）刘海屏-->
+        <meta-data
+            android:name="notch.config"
+            android:value="portrait|landscape" />
     </application>
 
 </manifest>

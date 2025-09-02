@@ -103,21 +103,6 @@ object FileManage {
         else Uri.fromFile(uri)
     }
 
-    /**
-     * 转为传统路径
-     */
-    fun getRealPathFromUri(context: Context, uri: Uri): String? {
-        val contentResolver = context.contentResolver
-        val projection = arrayOf(MediaStore.Images.Media.DATA)
-        val cursor = contentResolver.query(uri, projection, null, null, null)
-        cursor?.use {
-            val columnIndex = it.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
-            if (it.moveToFirst()) {
-                return it.getString(columnIndex)
-            }
-        }
-        return null
-    }
 
     fun getPicturesFile(fileName:String):File{
         val folderName: String = Environment.getExternalStoragePublicDirectory(pictureFlag).toString()

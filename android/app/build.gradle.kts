@@ -58,6 +58,17 @@ android {
 }
 
 dependencies {
+    implementation("com.google.guava:guava:27.1-android")
+
+
+    // Selfie segmentation
+    implementation ("com.google.mlkit:segmentation-selfie:16.0.0-beta6")
+    // Object detection feature with bundled default classifier
+    implementation ("com.google.mlkit:object-detection:17.0.2")
+
+    // Object detection feature with custom classifier support
+    implementation ("com.google.mlkit:object-detection-custom:17.0.2")
+
     // CameraX core library using the camera2 implementation
     val camerax_version = "1.5.0-rc01"
     // The following line is optional, as the core library is included indirectly by camera-camera2
