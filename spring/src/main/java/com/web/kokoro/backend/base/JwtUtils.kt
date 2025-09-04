@@ -5,11 +5,12 @@ import io.jsonwebtoken.Jwts
 import io.jsonwebtoken.security.Keys
 import jakarta.annotation.PostConstruct
 import org.springframework.beans.factory.annotation.Value
+import org.springframework.context.annotation.Configuration
 import org.springframework.stereotype.Component
 import java.util.*
 import javax.crypto.SecretKey
 
-@Component
+@Configuration
 class JwtUtils {
 
     @Value("\${jwt.secret}")

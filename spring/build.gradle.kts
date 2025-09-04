@@ -34,6 +34,9 @@ repositories {
 extra["springModulithVersion"] = "1.4.1"
 
 dependencies {
+	implementation("com.squareup.okio:okio:3.2.0")
+	implementation("com.squareup.okhttp3:okhttp:4.9.0")
+
 	implementation("com.alibaba:fastjson:1.2.76")
 
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
@@ -51,6 +54,8 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("org.springframework.boot:spring-boot-starter-security")
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+	//用于spring对于参数的验证
+	implementation("org.springframework.boot:spring-boot-starter-validation")
 
 	// JWT支持
 	implementation("io.jsonwebtoken:jjwt-api:0.11.5")

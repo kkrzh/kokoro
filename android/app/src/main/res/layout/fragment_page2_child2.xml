@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <Button
+        android:id="@+id/ImageSelectorButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="选择图片"/>
+    <TextView
+        android:layout_marginTop="@dimen/dp_40"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="input image"/>
+    <ImageView
+        android:id="@+id/inputImageView"
+        android:layout_marginTop="@dimen/dp_40"
+        android:layout_width="@dimen/dp_200"
+        android:layout_height="@dimen/dp_200"/>
+
+    <TextView
+        android:layout_marginTop="@dimen/dp_40"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Clip 裁剪"/>
+    <ImageView
+        android:id="@+id/outputClipImageView"
+        android:layout_marginTop="@dimen/dp_40"
+        android:layout_width="@dimen/dp_200"
+        android:layout_height="@dimen/dp_200"/>
+
+    <TextView
+        android:layout_marginTop="@dimen/dp_40"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RGB 转换"/>
+    <ImageView
+        android:id="@+id/outputRGBImageView"
+        android:layout_marginTop="@dimen/dp_40"
+        android:layout_width="@dimen/dp_200"
+        android:layout_height="@dimen/dp_200"/>
+    <TextView
+        android:layout_marginTop="@dimen/dp_40"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="HSV 转换"/>
+    <ImageView
+        android:id="@+id/outputHSVImageView"
+        android:layout_marginTop="@dimen/dp_40"
+        android:layout_width="@dimen/dp_200"
+        android:layout_height="@dimen/dp_200"/>
+
+</LinearLayout>

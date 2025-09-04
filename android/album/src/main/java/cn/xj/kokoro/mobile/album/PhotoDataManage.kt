@@ -13,6 +13,7 @@ import android.provider.MediaStore
 import android.util.Log
 import androidx.documentfile.provider.DocumentFile
 import androidx.lifecycle.LifecycleCoroutineScope
+import cn.xj.kokoro.mobile.album.FileUtils
 import cn.xj.kokoro.mobile.album.model.Folder
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
@@ -149,7 +150,7 @@ class PhotoDataManage(private val contet: Context) {
      */
      fun addPhoto(uri: Uri,success: () -> Unit){
         //目录名
-        val folderName : String = Environment.getExternalStoragePublicDirectory(FileManage.pictureFlag).toString()
+        val folderName : String = AppDirectoryProvider.PublicDirectories.getPicturesDirectory().toString()
         //文件名
         val fileName : String = DocumentFile.fromSingleUri(contet, uri)!!.name!!.split(".")[0]
         val fis: InputStream = contet.contentResolver.openInputStream(uri)!!
@@ -162,7 +163,7 @@ class PhotoDataManage(private val contet: Context) {
             //无论是否拥有都添加进全部图片中
             dataList[0].fileList.add(0,folderKt)
             for (i in dataList){
-                if (i.name == FileManage.fileFlag){
+                if (i.name == AppDirectoryProvider.appDirectory){
                     //若有该目录直接加入该目录
                     haveFolder = true
                     i.fileList.add(0,folderKt)
@@ -170,14 +171,14 @@ class PhotoDataManage(private val contet: Context) {
                 }
             }
             //若无该目录，添加该目录并添加图片
-            if (!haveFolder) dataList.add(Folder(FileManage.fileFlag, false, arrayListOf(folderKt)))
+            if (!haveFolder) dataList.add(Folder(AppDirectoryProvider.appDirectory, false, arrayListOf(folderKt)))
             success.invoke()
         }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             val values = ContentValues()
             values.put(MediaStore.Images.Media.DISPLAY_NAME, fileName)
             values.put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg")
-            values.put(MediaStore.Images.Media.RELATIVE_PATH, FileManage.pictureFlag)
+            values.put(MediaStore.Images.Media.RELATIVE_PATH, AppDirectoryProvider.PublicDirectories.picturesRelativePath)
             values.put(MediaStore.Images.Media.DATE_ADDED, System.currentTimeMillis())
             val uri10 = contet.contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values)
             val fos: OutputStream =   contet.contentResolver.openOutputStream(uri10!!)!!

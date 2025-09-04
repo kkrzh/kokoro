@@ -48,7 +48,6 @@ class Page3Fragment: BaseFragment() {
                         val bitmap: Bitmap? = BitmapUtils.imageToBitmap(it)
                         if (bitmap != null){
                             Glide.with(requireContext()).load(bitmap).into(findViewById<ImageView>(R.id.showImage))
-
                         }
 //                        imageProcessor!!.processBitmap(BitmapUtils.getBitmap(it))
 //                        imageProcessor!!.processImageProxy(imageProxy, graphicOverlay)

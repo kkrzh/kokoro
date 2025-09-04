@@ -60,7 +60,6 @@ android {
 dependencies {
     implementation("com.google.guava:guava:27.1-android")
 
-
     // Selfie segmentation
     implementation ("com.google.mlkit:segmentation-selfie:16.0.0-beta6")
     // Object detection feature with bundled default classifier

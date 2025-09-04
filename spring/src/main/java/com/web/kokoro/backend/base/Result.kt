@@ -1,6 +1,6 @@
 package com.web.kokoro.backend.base
 
-sealed class  ResultCode(val code: Int, val msg: String) {
+sealed class  ResultCode(open var code: Int,open var msg: String) {
     // ================ 成功状态码 (2xx) ================
     object SUCCESS : ResultCode(200, "成功")
     object CREATED : ResultCode(201, "资源创建成功")
@@ -33,6 +33,8 @@ sealed class  ResultCode(val code: Int, val msg: String) {
     object SERVICE_UNAVAILABLE : ResultCode(503, "服务不可用")
     object GATEWAY_TIMEOUT : ResultCode(504, "网关超时")
     object HTTP_VERSION_NOT_SUPPORTED : ResultCode(505, "HTTP版本不支持")
+
+    class CUSTEM(override var code:Int, override var msg: String):ResultCode(code, msg)
 }
 
 data class Result(

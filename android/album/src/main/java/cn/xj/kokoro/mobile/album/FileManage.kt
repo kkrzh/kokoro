@@ -11,8 +11,6 @@ import android.media.ExifInterface
 import android.net.Uri
 import android.os.Build
 import android.os.Environment
-import android.os.Environment.DIRECTORY_DOWNLOADS
-import android.os.Environment.DIRECTORY_PICTURES
 import android.provider.DocumentsContract
 import android.provider.MediaStore
 import android.text.TextUtils
@@ -33,13 +31,10 @@ Created by 张先杰 on 2022年11月2日16:07:47
 Description:对文件系统的管理 对文件与图片的处理
  */
 object FileManage {
-    var fileFlag = "Kokoro"
-    val pictureFlag = "${DIRECTORY_PICTURES}${File.separator}${fileFlag}"
-    val downLoadFlag = "${DIRECTORY_DOWNLOADS}${File.separator}${fileFlag}"
-    val fileProviderAuthorities = "cn.xj.kokoro.mobile.fileprovider"
 
-    //是否为https:前缀
-    fun  String.isHttps()= substring(0,6) == "https:"
+
+    //isHttps
+    fun String.isHttps()= startsWith("https:")
 
     /**
     * 文件拷贝
@@ -94,33 +89,24 @@ object FileManage {
      */
     fun getProviderUri(context: Context, uri: String): Uri {
         return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
-            FileProvider.getUriForFile(context, fileProviderAuthorities, File(uri))
+            FileProvider.getUriForFile(context, AppDirectoryProvider.fileProviderAuthorities, File(uri))
         else Uri.fromFile(File(uri))
     }
 
     fun getProviderUri(context: Context, uri: File): Uri {
-        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) FileProvider.getUriForFile(context, fileProviderAuthorities, uri)
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) FileProvider.getUriForFile(context,
+            AppDirectoryProvider.fileProviderAuthorities, uri)
         else Uri.fromFile(uri)
     }
 
 
     fun getPicturesFile(fileName:String):File{
-        val folderName: String = Environment.getExternalStoragePublicDirectory(pictureFlag).toString()
-        val file = File(folderName, fileName)
-        val folder = File(folderName)
-        if (!folder.exists()) folder.mkdirs()
-        if (file.exists() && file.isFile) file.delete()
-        file.createNewFile()
-        return file
+        val folderName: File = AppDirectoryProvider.PublicDirectories.getPicturesDirectory()
+        return FileUtils.createNewFile(folderName,fileName)
     }
     fun getDownLoadFile(fileName:String):File{
-        val folderName: String = Environment.getExternalStoragePublicDirectory(downLoadFlag).toString()
-        val file = File(folderName, fileName)
-        val folder = File(folderName)
-        if (!folder.exists()) folder.mkdirs()
-        if (file.exists() && file.isFile) file.delete()
-        file.createNewFile()
-        return file
+        val folderName: File = AppDirectoryProvider.PublicDirectories.getDownloadDirectory()
+        return FileUtils.createNewFile(folderName,fileName)
     }
 
     /**
@@ -134,7 +120,7 @@ object FileManage {
         val baseFile =
             File(
                 context.getExternalFilesDir("TakePhone"),
-                File.separator + "${fileFlag}_${System.currentTimeMillis()}.jpg"
+                File.separator + "${AppDirectoryProvider.appDirectory}_${System.currentTimeMillis()}.jpg"
             )
         try {
             if (baseFile.exists()) {
@@ -248,7 +234,7 @@ object FileManage {
         return null
     }
 
-    private fun getFileName(uri: Uri?): String? {
+    fun getFileName(uri: Uri?): String? {
         if (uri == null) return null
         var fileName: String? = null
         val path = uri.path

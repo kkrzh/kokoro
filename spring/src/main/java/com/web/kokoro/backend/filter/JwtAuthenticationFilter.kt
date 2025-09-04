@@ -25,12 +25,12 @@ class JwtAuthenticationFilter(
         response: HttpServletResponse,
         filterChain: FilterChain
     ) {
-        System.out.println("lanjie")
+        println("成功拦截=======================================================")
 
         //1.获取请求url
         val url: String = request.requestURL.toString()
-        System.out.println("请求路径：{}"+url) //请求路径：http://localhost:8080/login
-        if(url.contains("/login") || url.contains("/register")){
+        println("请求路径：{$url}") //请求路径：http://localhost:8080/login
+        if(url.contains("/login") || url.contains("/register") || url.contains("/deepseek/chat/completions")){
             filterChain.doFilter(request, response);//放行请求
             return;//结束当前方法的执行
         }
@@ -43,7 +43,7 @@ class JwtAuthenticationFilter(
             SecurityContextHolder.getContext().authentication = auth
         }else{
 
-            //把Result对象转换为JSON格式字符串 (fastjson是阿里巴巴提供的用于实现对象和json的转换工具类)
+            //把Result对象转换为JSON格式字符串
             val json: String? = com.alibaba.fastjson.JSONObject.toJSONString(Result.error(UNAUTHORIZED))
             response.contentType = "application/json;charset=utf-8"
 

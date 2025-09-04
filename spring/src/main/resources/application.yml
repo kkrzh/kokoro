@@ -1,6 +1,9 @@
 # ========================
 # 应用基本配置
 # ========================
+deepseek:
+  api-key: "sk-13ee9ce40a864670bf0ec47d85eb079e"
+
 jwt:
   secret: "bXlTdXBlclNlY3JldEtleVRoYXRJczMyQnl0ZXNMb25n" # 32字节Base64编码
   expiration: 86400000 # 24小时
@@ -17,9 +20,9 @@ spring:
   #配置单个文件最大上传大小
   servlet:
     multipart:
-      max-file-size=10MB
+      max-file-size: 10MB
       #配置单个请求最大上传大小(一次请求可以上传多个文件)
-      max-request-size=100MB
+      max-request-size: 100MB
 
   # 禁用Spring Boot安全默认用户
 #  security:

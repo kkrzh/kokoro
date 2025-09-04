@@ -8,10 +8,12 @@ import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import cn.xj.kokoro.mobile.R
+import cn.xj.kokoro.mobile.album.AppDirectoryProvider
 import cn.xj.kokoro.mobile.base.BaseActivity
-import cn.xj.kokoro.mobile.ui.page3.Page3Fragment
+import cn.xj.kokoro.mobile.ui.page2.Page2Fragment
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import org.opencv.android.OpenCVLoader
 
 class MainActivity : BaseActivity(R.layout.activity_main) {
     val fragmentList: MutableList<Pair<String, Fragment>> = arrayListOf()
@@ -23,11 +25,12 @@ class MainActivity : BaseActivity(R.layout.activity_main) {
     val page2Fragment by lazy {
         Page2Fragment()
     }
-    val page3Fragment by lazy {
-        Page3Fragment()
-    }
+//    val page3Fragment by lazy {
+//        Page3Fragment()
+//    }
 
     override fun init(savedInstanceState: Bundle?) {
+        OpenCVLoader.initLocal()
         enableEdgeToEdge()
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -36,7 +39,7 @@ class MainActivity : BaseActivity(R.layout.activity_main) {
         }
         fragmentList.add("OBJECT-绘制" to page1Fragment)
         fragmentList.add("OBJECT-OPENCV" to page2Fragment)
-        fragmentList.add("vision-quickstart" to page3Fragment)
+//        fragmentList.add("vision-quickstart" to page3Fragment)
 
         val tabLayout = findViewById<TabLayout>(R.id.tabLayout)
 

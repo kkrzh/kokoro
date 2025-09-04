@@ -193,15 +193,10 @@ class DashboardView : View {
 
         //绘制进度
         val pointerAngle = (currentValue - minValue) / (maxValue - minValue) * sweepAngle
-        Log.e("TAG", "角度: "+pointerAngle )
         coloursPaint.strokeWidth = alphaHeight
         coloursPaint.shader = alphaShader
         coloursPaint.strokeJoin = Paint.Join.BEVEL
         coloursPaint.strokeCap = Paint.Cap.BUTT
-        Log.e("TAG", "drawDialPlate: 左"+distance*1.2 )
-        Log.e("TAG", "drawDialPlate: 上"+distance*1.2 )
-        Log.e("TAG", "drawDialPlate: 右"+(width-distance) )
-        Log.e("TAG", "drawDialPlate: 下"+(height-distance) )
         canvas.drawArc(rectFProcessArc!!,startAngle,pointerAngle, false, coloursPaint)
 
     }

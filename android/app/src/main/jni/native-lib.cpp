@@ -12,7 +12,7 @@
 extern "C" JNIEXPORT jstring JNICALL
 
 Java_cn_xj_kokoro_mobile_NativeLib_helloWorld(JNIEnv *env, jobject) {
-    std::string hello = "C++Text,调用测试，图片操作";
+    std::string hello = "C++Text,调用测试，图片选择";
     return env->NewStringUTF(hello.c_str());
 }
 

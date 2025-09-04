@@ -42,7 +42,7 @@ import kotlinx.coroutines.withContext
  * @param maxChoose 最大选择数、默认为1，为1时即为单选
  * @param useVideo 是否获取视频
  */
-fun Context.selectorImage(maxChoose:Int = 1,useVideo:Boolean = false,resultSuccess:((Array<String>)->Unit)){
+fun Context.selectorImage(maxChoose:Int = 1,enableCompression:Boolean = true,useVideo:Boolean = false,resultSuccess:((Array<String>)->Unit)){
     if (this is BaseActivity){
             val bundle = Bundle().apply {
                 putInt("maxChoose", maxChoose)
@@ -74,6 +74,7 @@ class ImageSelectorActivity : BaseBindingActivity<ActivityPhotoSelectorBinding>(
     //最大选中数
     val maxChoose by lazy { intent.getIntExtra("maxChoose",0) }
     val useVideo by lazy { intent.getBooleanExtra("useVideo",false) }
+    val enableCompression by lazy { intent.getBooleanExtra("enableCompression",false) }
 
     //当前选中目录下标
     internal var choosePosition = 0
@@ -202,27 +203,37 @@ class ImageSelectorActivity : BaseBindingActivity<ActivityPhotoSelectorBinding>(
         }
         binding.finishButton.setOnIntervalClickListener {
             val sortList = photoDataManage.getSortCheck()
-            loadingWindow.showWindow("正在处理图片...")
-            GlobalScope.launch(Dispatchers.IO){
-                for (i in sortList.indices){
-                    FileManage.compressImage(this@ImageSelectorActivity,sortList[i].toUri()){
-                        Log.e(TAG, "initListener: ${sortList[i]}", )
-                        Log.e(TAG, "initListener: ${sortList[i].toUri()}", )
-                        Log.e(TAG, "initListener: ${it}", )
-                        sortList[i] = it.toString()
+            if (enableCompression){
+                loadingWindow.showWindow("正在处理图片...")
+                GlobalScope.launch(Dispatchers.IO){
+                    for (i in sortList.indices){
+                        FileManage.compressImage(this@ImageSelectorActivity,sortList[i].toUri()){
+                            Log.e(TAG, "initListener: ${sortList[i]}", )
+                            Log.e(TAG, "initListener: ${sortList[i].toUri()}", )
+                            Log.e(TAG, "initListener: ${it}", )
+                            sortList[i] = it.toString()
+                        }
+                    }
+                    withContext(Dispatchers.Main){
+                        loadingWindow.hindWindow {
+                            val intent = Intent()
+                            val bundle = Bundle()
+                            bundle.putStringArray("PhotoArray",sortList)
+                            intent.putExtras(bundle)
+                            setResult(RESULT_OK, intent)
+                            finishAfterTransition()
+                        }
                     }
                 }
-                withContext(Dispatchers.Main){
-                    loadingWindow.hindWindow {
-                        val intent = Intent()
-                        val bundle = Bundle()
-                        bundle.putStringArray("PhotoArray",sortList)
-                        intent.putExtras(bundle)
-                        setResult(RESULT_OK, intent)
-                        finishAfterTransition()
-                    }
-                }
+            }else{
+                val intent = Intent()
+                val bundle = Bundle()
+                bundle.putStringArray("PhotoArray",sortList)
+                intent.putExtras(bundle)
+                setResult(RESULT_OK, intent)
+                finishAfterTransition()
             }
+
         }
         binding.layoutToolbarIconClick.setOnClickListener {
             finishAfterTransition()
